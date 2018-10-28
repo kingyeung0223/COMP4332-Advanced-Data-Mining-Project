@@ -1,0 +1,105 @@
+Get links to different timeslots
+//li/a/@href
+
+
+In a single timeslot, get links to different departments
+//a/@href
+
+
+In a single department:
+
+count number of courses in a page
+size of list extracted would be number of courses
+//div[@class = 'course']/@class
+
+base for accessing basic info of the i th course on the page
+//div[@id="classes"]/div[i]
+
+course title and course code of the i th course
+further splitting are needed
+//div[@id='classes']/div[i]/h2/text()
+
+course description of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() = "DESCRIPTION"]/td/text()
+
+course credit of the i th course on the page
+credit number is at position -8
+//div[@id='classes']/div[i]/h2/text()
+
+course description of the i th course on the page
+//div[@id='classes']/div[i]//div[@class = 'popupdetail']//tr[2]/td/text()
+
+prerequisite of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() = "PRE-REQUISITE"]/td/text()
+
+attributes of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() ='ATTRIBUTES']/td/text()
+
+colist of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() ='CO-LIST WITH']/td/text()
+
+co_requisite of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() ='CO-REQUISITE']/td/text()
+
+exclusion of the i th course on the page
+//div[@id='classes']/div[i]//tr[th/text() ='EXCLUSION']/td/text()
+
+
+
+For each course
+
+count number of sections in the i th course on the page
+//div[@id="classes"]/div[i]//tr[contains(@class, 'newsect')]/@class
+
+count number of rows (including header)in the table of the i th course on the page
+//div[@id="classes"]/div[i]//table[@class = "sections"]//tr
+
+access the j th rows in the table of the i th course
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]
+
+get section in the j th row of the i th course on the page
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[1]/text()
+
+get time in the j th row of the i th course where j th row represents a new section
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[2]/text()
+
+get time in the j th row of the i th course where j th row is not a new section
+//div[@id="classes"]/div[i]//table[@class = "sections"]//tr[j+1]/td[1]/text()
+
+get room in the j th row of the i th course where j th row represents a new section
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[3]/text()
+
+get room in the j th row of the i th course where j th row is not a new section
+//div[@id="classes"]/div[i]//table[@class = "sections"]//tr[j+1]/td[2]/text()
+
+get instructor in the j th row of the i th course where j th row represents a new section
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[4]/text()
+
+get instructor in the j th row of the i th course where j th row is not a new section
+//div[@id="classes"]/div[i]//table[@class = "sections"]//tr[j+1]/td[3]/text()
+
+get Quota in the j th row of the i course on the page
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[5]//text()
+
+get Enrol in the j th row of the i course on the page
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[6]/text()
+
+get Avail in the j th row of the i course on the page
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[7]//text()
+
+get Wait in the j th row of the i course on the page
+//div[@id='classes']/div[i]//table[@class = 'sections']//tr[j+1]/td[8]//text()
+
+
+remark of j row of the table of the i th course on the page
+consent type remark 
+//div[@id='classes']/div[i]//table[@class = "sections"]//tr[j+1]//div[contains(@class, 'consent')]/div/text()
+addtional info tpye of remark
+//div[@id='classes']/div[30]//table[@class = "sections"]//tr[2]//div[contains(@class, 'classnotes')]/div/text()
+
+
+Get the number of date_and_time that a section of a course has
+where i represents i th course on the page
+where j represents j rows course on the page
+If the number returned is >1, that means the follow row should be of the same section
+//div[@id="classes"]/div[i]//table[@class = "sections"]//tr[j+1]/td[5]/@rowspan
